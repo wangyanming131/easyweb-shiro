@@ -14,7 +14,7 @@ MySQL - 5.6.34-log : Database - easyweb-shiro
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`easyweb-shiro` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-USE `easyweb-shiro`;
+USE `db_easyweb-shiro`;
 
 /*Table structure for table `sys_authorities` */
 
@@ -65,8 +65,7 @@ CREATE TABLE `sys_dictionarydata` (
   `sort_number` int(1) NOT NULL COMMENT '排序',
   `description` varchar(100) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`dictdata_code`),
-  KEY `FK_Reference_36` (`dict_code`),
-  CONSTRAINT `sys_dictionarydata_ibfk_1` FOREIGN KEY (`dict_code`) REFERENCES `sys_dictionary` (`dict_code`)
+  KEY `FK_Reference_36` (`dict_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='字典项';
 
 /*Data for the table `sys_dictionarydata` */
@@ -86,8 +85,7 @@ CREATE TABLE `sys_login_record` (
   `ip_address` varchar(40) DEFAULT NULL COMMENT 'ip地址',
   `create_time` datetime NOT NULL COMMENT '登录时间',
   PRIMARY KEY (`id`),
-  KEY `FK_sys_login_record_user` (`user_id`),
-  CONSTRAINT `sys_login_record_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`user_id`)
+  KEY `FK_sys_login_record_user` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5454 DEFAULT CHARSET=utf8mb4 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `sys_login_record` */
@@ -141,9 +139,7 @@ CREATE TABLE `sys_role_authorities` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `FK_sys_role_permission_pm` (`authority_id`),
-  KEY `FK_sys_role_permission_role` (`role_id`),
-  CONSTRAINT `sys_role_authorities_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `sys_role` (`role_id`),
-  CONSTRAINT `sys_role_authorities_ibfk_3` FOREIGN KEY (`authority_id`) REFERENCES `sys_authorities` (`authority_id`)
+  KEY `FK_sys_role_permission_role` (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='角色权限关联表';
 
 /*Data for the table `sys_role_authorities` */
@@ -188,9 +184,7 @@ CREATE TABLE `sys_user_role` (
   `create_time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_sys_user_role` (`user_id`),
-  KEY `FK_sys_user_role_role` (`role_id`),
-  CONSTRAINT `sys_user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`user_id`),
-  CONSTRAINT `sys_user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `sys_role` (`role_id`)
+  KEY `FK_sys_user_role_role` (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
 
 /*Data for the table `sys_user_role` */
