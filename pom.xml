@@ -6,7 +6,9 @@
     <groupId>com.ew</groupId>
     <artifactId>easyweb-shiro</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <!--<packaging>jar</packaging>-->
+    <!-- war包方式部署,修改1:jar改为war -->
+    <packaging>war</packaging>
 
     <name>easyweb-shiro</name>
     <description>easyweb-shiro project for Spring Boot</description>
@@ -29,7 +31,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!-- war包方式部署,修改2:除嵌入式tomcat插件 -->
+            <!-- 移除嵌入式tomcat插件 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!-- war包方式部署,修改3:添加servlet-api的依赖 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
