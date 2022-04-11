@@ -6,6 +6,7 @@
     <groupId>com.ew</groupId>
     <artifactId>easyweb-shiro</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <!-- jar包方式运行 -->
     <packaging>jar</packaging>
 
     <name>easyweb-shiro</name>
