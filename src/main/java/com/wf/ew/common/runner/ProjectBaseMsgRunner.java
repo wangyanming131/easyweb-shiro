@@ -16,7 +16,7 @@ import java.net.UnknownHostException;
 @Order(1)
 public class ProjectBaseMsgRunner implements ApplicationRunner {
 
-    @Value("${server.servlet.context-path:}")
+    @Value("${server.servlet.context-path}")
     private String contextPath;
 
     /**
@@ -31,7 +31,9 @@ public class ProjectBaseMsgRunner implements ApplicationRunner {
         try {
             //系统启动时获取数据库数据，设置到公用静态集合sysSettingMap
             String ip = InetAddress.getLocalHost().getHostAddress();
-            ip = "127.0.0.1";
+            if (ip.equals("127.0.0.1") == false) {
+                ip = "127.0.0.1";
+            }
             //获取本机内网IP
             String address = "http://" + ip + ":" + port + contextPath;
             System.out.println("启动成功：" + address);
